@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>DataTableサンプル</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+	<!--<style>
+		.container {
+			border: 1px solid black;
+			padding: 1rem;
+			margin: 1rem;
+		}
+	</style> -->
+	<style>
+		.container {
+			padding: 1rem;
+			margin: 1rem;
+		}
+	</style>
+
+</head>
+
+<body>
+	<p>
+		<a id="acdn-button" class="acdn-button">
+			<b>開閉する</b>
+		</a>
+	</p>
+
+
+	<div class="container container-fluid">
+
+		<table id="myTable" class="table table-striped tagle-bordered">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th width="150px"></th>
+					<th width="50px"></th>
+					<th width="50px"></th>
+					<th width="50px"></th>
+					<th>
+						<a id="acdn-button2" class="acdn-button2">
+							<b>みだし行でも開閉する</b>
+						</a>
+					</th>
+				</tr>
+			</thead>
+
+			<!-- 開閉する要素 -->
+			<tbody id="acdn-target">
+				<tr>
+					<th>No</th>
+					<th width="150px">名前</th>
+					<th width="50px">性別</th>
+					<th width="50px">年齢</th>
+					<th width="50px">種別</th>
+					<th>好物</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>ぽち</td>
+					<td>♂</td>
+					<td>6</td>
+					<td>短毛</td>
+					<td>ほねっこ</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>みけさん</td>
+					<td>♂</td>
+					<td>5</td>
+					<td>短毛</td>
+					<td>ちゅーるー</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>モフモフの王</td>
+					<td>♂</td>
+					<td>4</td>
+					<td>長毛</td>
+					<td>高級フード</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>はちわれさん</td>
+					<td>♀</td>
+					<td>2</td>
+					<td>長毛</td>
+					<td>かりかり</td>
+				</tr>
+			</tbody>
+			<!--<tfoot>
+				<tr>
+					<th>No</th>
+					<th>名前</th>
+					<th>性別</th>
+					<th>年齢</th>
+					<th>種別</th>
+					<th>好物</th>
+				</tr>
+			</tfoot> -->
+		</table>
+	</div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+	// [#acdn-target]は最初、非表示にしておく
+	$('#acdn-target').hide();
+
+	// [#acdn-button]にクリックイベントを設定する
+	$('#acdn-button').click(function () {
+		// [#acdn-target]に[slideToggle()]を実行する
+		$('#acdn-target').slideToggle();
+
+	});
+
+	// [#acdn-button2]にクリックイベントを設定する
+	$('#acdn-button2').click(function () {
+		// [#acdn-target]に[slideToggle()]を実行する
+		$('#acdn-target').slideToggle();
+
+	});
+	$(document).ready(function () {
+
+		$('#myTable').DataTable({
+			'paging': true,
+			'pageLength': 6,
+			'lengthChange': true,
+			'searching': true,
+			//'ordering': true,
+			'ordering': false,
+			'info': true,
+			'autoWidth': false,
+			'scrollX': true,
+			'scrollY': true,
+			'order': [[0, 'asc']],
+			"language": {
+				"decimal": ".",
+				"emptyTable": "表示するデータがありません。",
+				"info": "_START_ ～ _END_ / _TOTAL_ 件中",
+				"infoEmpty": "0 ～ 0 / 0 件",
+				"infoFiltered": "(合計 _MAX_ 件からフィルタリングしています)",
+				"infoPostFix": "",
+				"thousands": ",",
+				"lengthMenu": "1ページ _MENU_ 件を表示する",
+				"loadingRecords": "読み込み中...",
+				"processing": "処理中...",
+				"search": "絞り込み:",
+				"zeroRecords": "一致するデータが見つかりません。",
+				"paginate": {
+					"first": "最初",
+					"last": "最後",
+					"next": "次",
+					"previous": "前"
+				}
+			}
+		});
+
+
+	});
+</script>
+
+</html>
